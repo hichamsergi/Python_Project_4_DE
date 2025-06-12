@@ -2,7 +2,7 @@
 
 Este repositorio se utilizará para llevar a cabo un proyecto de Python para la Ingeniería de Datos, como parte del certificado de IBM de *Python Project for Data Engineering*.
 
-Para poder llevar a cabo el proyecto, se tomará el rol de un ingerniero de datos y se utilizaránm técnicas de *web scraping* y transformación de datos, para poder almacenarlos en bases de datos a las que poder hacer *queries* mediante Python.
+Para poder llevar a cabo el proyecto, se tomará el rol de un ingerniero de datos y se utilizarán técnicas de *web scraping* y transformación de datos, para poder almacenarlos en bases de datos a las que poder hacer *queries* mediante Python.
 
 **ÍNDICE:**
 1. [Módulo 1](#módulo-1)
@@ -43,7 +43,7 @@ def extract_jsondata(file_in_json):
 
 def extract():
 
-    # Generamos un DT con las columnas de 'nombre', 'altura' y 'peso':
+    # Generamos un DF con las columnas de 'nombre', 'altura' y 'peso':
     extracted_data = pd.DataFrame(columns=['name','height','weight'])
 
     for csv_file in glob.glob('*csv'):
@@ -124,8 +124,10 @@ log('Load phase started')
 
 targetfile = 'transformed_data.csv'
 
-load(targetfile, transformed_data) # Cargamos dentro de targetfile, un documento vacio, el contenido
-                                   # del DF,transformed_data, generado en las fases anteriores.
+load(targetfile, transformed_data) # Atribuimos a targetfile, un documento vacio, 
+                                   # el contenido del documento lo rellenamos con 
+                                   # los valores del DF,transformed_data,
+                                   # generado en las fases anteriores.
 log('Load phase ended')
 
 log('ETL job ended')
