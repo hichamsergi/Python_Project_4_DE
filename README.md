@@ -5,8 +5,8 @@ Este repositorio se utilizará para llevar a cabo un proyecto de Python para la 
 Para poder llevar a cabo el proyecto, se tomará el rol de un ingerniero de datos y se utilizaránm técnicas de *web scraping* y transformación de datos, para poder almacenarlos en bases de datos a las que poder hacer *queries* mediante Python.
 
 **ÍNDICE:**
-1. [Módulo 1](#modulo-1)
-2. [Módulo 2](#modulo-2)
+1. [Módulo 1](#modulo-1:)
+2. [Módulo 2](#modulo-2:)
 
 ## MÓDULO 1:
 
