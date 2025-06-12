@@ -28,22 +28,20 @@ def extract():
     Extaer todos los datos CSV y JSON
     '''
     # DT ensambler:
-    df_json = pd.DataFrame(columns=['Nombre','Altura','Peso'])
+    df = pd.DataFrame(columns=['Nombre','Altura','Peso'])
 
 
     # Read CSV files:
-    for csv_file in glob.glob("modulo-1/*.csv"):
-       # df_csv = df_csv.add(trans_csv(csv_file))
+    for csv_file in glob.glob("*.csv"):
+        df = pd.concat([df,trans_csv(csv_file)], ignore_index=True)
 
     #Read JSON file:
-    for json_file in glob.glob("modulo-1/*.json"):
-        df_json = trans_json(json_file)
+    for json_file in glob.glob("*.json"):
+        df = pd.concat([df,trans_json(json_file)], ignore_index=True)
 
-    return df_json
+    return df
 
-print()
-extract()
-print('All OK')
+print(extract())
 
 ## Transform phase:
 ## Load phase:
