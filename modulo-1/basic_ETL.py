@@ -51,7 +51,7 @@ def transform(data2transform):
     #Transform data of 'Peso' column:
     data2transform[['Peso']] = round(data2transform[['Peso']] * 0.453592, 2)
 
-    data2transform.rename(columns={'Altura':'Altura (cm)','Peso':'Peso(kg)'})
+    data2transform = data2transform.rename(columns={'Altura':'Altura (cm)','Peso':'Peso(kg)'})
 
     return data2transform
 
