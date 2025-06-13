@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime as dt
+from datetime import datetime
 import glob
 
 
@@ -27,7 +27,7 @@ def extract():
     '''
     Extaer todos los datos CSV y JSON
     '''
-    # DT ensambler:
+    # DF ensambler:
     df = pd.DataFrame(columns=['Nombre','Altura','Peso'])
 
 
@@ -41,9 +41,47 @@ def extract():
 
     return df
 
-print(extract())
-
 ## Transform phase:
+
+def transform(data2transform):
+    '''
+    Transforma los valores en sistema imperial a sistema métrico 
+    '''
+    #Transfrom data of 'Altura' column:
+    data2transform[['Altura']] = round(data2transform[['Altura']] * 2.54, 2)
+    #Transform data of 'Peso' column:
+    data2transform[['Peso']] = round(data2transform[['Peso']] * 0.453592, 2)
+
+    return data2transform
+
 ## Load phase:
+def load(data2load):
+    '''
+    Cargar datos en un documento csv de datos conjuntos
+    '''
+    data2load.to_csv('final_file.csv')
+    print("Final file generated, check it!")
+
 
 ##Logging phase:
+def logging(message):
+    '''
+    Función de logging para registrar la fases de la ejecución
+    '''
+    with open('logging_file.txt','a') as file:
+
+        #Adding a newline tot the logging file with the message and date
+        file.write( datetime.now().strftime("%Y-%m-%d %H:%M:%S " + message) + '\n' )
+
+
+logging('Starting the ETL process')
+logging('Extraction phase started')
+dfs_extracted = extract()
+logging('Extraction phase ended')
+logging('Transform phase started')
+dfs_transformed = transform(dfs_extracted)
+logging('Transform phase ended')
+logging('Load phase started')
+load(dfs_transformed)
+logging('Load phase ended')
+logging('ETL process ended')

@@ -1,0 +1,8 @@
+2025-06-13 13:04:15 Starting the ETL process
+2025-06-13 13:04:15 Extraction phase started
+2025-06-13 13:04:15 Extraction phase ended
+2025-06-13 13:04:15 Transform phase started
+2025-06-13 13:04:15 Transform phase ended
+2025-06-13 13:04:15 Load phase started
+2025-06-13 13:04:15 Load phase ended
+2025-06-13 13:04:15 ETL process ended
