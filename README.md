@@ -133,7 +133,7 @@ log('ETL job ended')
 ```
 
 ### 2. WEB SCRAPING:
-De la descripción literal del inglés, *web scraping* define el hecho de "rascar la web", o extraer datos de la web. Consiste en analizar los datos y la informacion contenida en una web mediante *metodos HTTP* y la normalización de la información extraida. Podemos hacerl de la siguiente forma:
+De la descripción literal del inglés, *web scraping* define el hecho de "rascar la web", o extraer datos de la web. Consiste en analizar los datos y la informacion contenida en una web mediante *metodos HTTP* y la normalización de la información extraida. Podemos hacerlo de la siguiente forma:
 
 ```python
 from bs4 import BeautifulSoup
@@ -193,7 +193,8 @@ players_name = soup.find_all(name='h3')
 #       <h3><b id='mr3'>Stephen Curry</b></h3>
 #       <h3><b id='goat'>Michael Jordan</b></h3>
 #
-# El método find_all nos permite almacenar los descencientes de todas las etiquetas que coincidan con la busqueda, en este caso todas las etiquetas 'h3'
+# El método find_all nos permite almacenar los descencientes de todas las etiquetas que 
+#  coincidan con la busqueda, en este caso todas las etiquetas 'h3'
 
 players_name[1]
 
