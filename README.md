@@ -129,8 +129,82 @@ load(targetfile, transformed_data) # Atribuimos a targetfile, un documento vacio
                                    # los valores del DF,transformed_data,
                                    # generado en las fases anteriores.
 log('Load phase ended')
-
 log('ETL job ended')
+```
+
+### 2. WEB SCRAPING:
+De la descripción literal del inglés, *web scraping* define el hecho de "rascar la web", o extraer datos de la web. Consiste en analizar los datos y la informacion contenida en una web mediante *metodos HTTP* y la normalización de la información extraida. Podemos hacerl de la siguiente forma:
+
+```python
+from bs4 import BeautifulSoup
+
+html = "<!DOCTYPE html><html><head>..." # Simulamos que hemos recogido información de una web
+
+soup = BeautifulSoup(html, 'html5lib')
+```
+
+**Beautiful Soup** nos permite organizar el HTML de una web como si fuera una estructura de datos anidados. De esta forma convertimos dicho HTML en un conjunto de objetos en forma de arbol, con metodos que nos permiten analizar el HTML.
+
+Como utilizar **Beautiful Soup**:
+
+```python
+
+title_object = soup.title
+#
+# title_object:
+#       <title>Page Title</title>
+#
+
+head_object = soup.h3
+#
+# head_object:
+#       <h3>
+#           <b id='boldest'>Lebron James</b>
+#       </h3>
+#
+# En el caso de haber mas de 1 objeto con el mismo "tag", solo recoge el primer "tag"
+
+tag_hijo = head_object.b
+tag_parent = tag_hijo.parent
+#
+# tag_hijo:
+#       <b id='boldest'>Lebron James</b>
+#
+# tag_parent tiene el mismo contenido que head_object
+
+tag_hermano = head_object.next_sibling
+#
+# tag_hermano:
+#       <p> Salary: $ 92,000,000</p>
+
+tag_hijo.attrs
+tag_hijo.string
+#
+# tag_hijo.attrs:
+#       {'id':'boldest'}
+#
+# tag_hijo.string:
+#       'Lebron James'
+
+players_name = soup.find_all(name='h3')
+#
+# players_name:
+#       <h3><b id='boldest'>Lebron James</b></h3>
+#       <h3><b id='mr3'>Stephen Curry</b></h3>
+#       <h3><b id='goat'>Michael Jordan</b></h3>
+#
+# El método find_all nos permite almacenar los descencientes de todas las etiquetas que coincidan con la busqueda, en este caso todas las etiquetas 'h3'
+
+players_name[1]
+
+sec_name = players_name[1]
+sec_name.b
+#
+# players_name[1]:
+#       <h3><b id='mr3'>Stephen Curry</b></h3>
+#
+# sec_name.b:
+#       <b id='mr3'>Stephen Curry</b>
 ```
 
 ## MÓDULO 2:
