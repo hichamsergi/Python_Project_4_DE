@@ -15,16 +15,19 @@ def extract_pdfdata():
 
     DATADIR = os.path.join(BASEDIR, "data")
 
-    df_alldata = pd.DataFrame()
+    all_df = []
 
     for pdffile_data in glob.glob(os.path.join(DATADIR, "*.pdf")):
-
         
-        df_pdf = read_pdf(pdffile_data, pages='all', stream=True)
-      
-        df_alldata = pd.concat(df_alldata, df_pdf, ignore_index=True)
+        print(f'Extracting data from: {pdffile_data}')
 
-    return df_alldata
+        df_info = read_pdf(pdffile_data, pages='all', stream=True, multiple_tables=True)
+
+        df_pdf = pd.concat(df_info, ignore_index=True)
+
+        all_df.append(df_pdf)
+
+    return all_df
 
 ## Transform:
 
@@ -35,4 +38,4 @@ def extract_pdfdata():
 # Calculate:
 ## Ruta a los datos:
 
-print(extract_pdfdata())
+extract_pdfdata()
